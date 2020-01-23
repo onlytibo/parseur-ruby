@@ -20,7 +20,9 @@ allCryptoPrices = pageAllCryptos.xpath('//td[@class = "cmc-table__cell cmc-table
  
 allCryptoPricesArray = []
 allCryptoPrices.map do |price|
-  allCryptoPricesArray << price.text # On met tous les Prices dans un Array
+  price = price.text.delete!("$")
+  price = price.to_f
+  allCryptoPricesArray << price.to_f # On met tous les Prices dans un Array
 end
 
 # On merge les deux Array dans un Hash
